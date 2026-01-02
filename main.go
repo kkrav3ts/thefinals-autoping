@@ -17,30 +17,34 @@ var (
 const (
 	// https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 	VK_RBUTTON = 0x02
-	VK_MBUTTON = 0x04
 
-	INPUT_KEYBOARD  = 1
-	KEYEVENTF_KEYUP = 0x0002
+	// Input types
+	INPUT_MOUSE = 0
+
+	// Mouse event flags
+	MOUSEEVENTF_MIDDLEDOWN = 0x0020
+	MOUSEEVENTF_MIDDLEUP   = 0x0040
 
 	// Configuration - adjust these as needed
 	PingInterval   = 1 * time.Second
 	PollRateActive = 50 * time.Millisecond  // Fast polling when aiming
 	PollRateIdle   = 200 * time.Millisecond // Slow polling when idle
-	KeyPressDelay  = 10 * time.Millisecond
+	ClickDelay     = 10 * time.Millisecond
 )
 
-type keyboardInput struct {
-	Vk        uint16
-	Scan      uint16
+type mouseInput struct {
+	Dx        int32
+	Dy        int32
+	MouseData uint32
 	Flags     uint32
 	Time      uint32
 	ExtraInfo uintptr
 }
 
-type input struct {
+type mouseInputWrapper struct {
 	Type uint32
 	_    [8 - unsafe.Sizeof(uint32(0))]byte // Padding for 64-bit alignment
-	Ki   keyboardInput
+	Mi   mouseInput
 }
 
 func isKeyPressed(vk int) bool {
@@ -48,18 +52,18 @@ func isKeyPressed(vk int) bool {
 	return ret&0x8000 != 0
 }
 
-func pressKey(vk int) {
-	var inp input
-	inp.Type = INPUT_KEYBOARD
-	inp.Ki.Vk = uint16(vk)
+func clickMiddleMouse() {
+	var inp mouseInputWrapper
+	inp.Type = INPUT_MOUSE
 
-	// Key down
+	// Mouse down
+	inp.Mi.Flags = MOUSEEVENTF_MIDDLEDOWN
 	sendInput.Call(1, uintptr(unsafe.Pointer(&inp)), uintptr(unsafe.Sizeof(inp)))
 
-	time.Sleep(KeyPressDelay)
+	time.Sleep(ClickDelay)
 
-	// Key up
-	inp.Ki.Flags = KEYEVENTF_KEYUP
+	// Mouse up
+	inp.Mi.Flags = MOUSEEVENTF_MIDDLEUP
 	sendInput.Call(1, uintptr(unsafe.Pointer(&inp)), uintptr(unsafe.Sizeof(inp)))
 }
 
@@ -83,9 +87,9 @@ func main() {
 			if !pressed {
 				pressed = true
 				lastPing = time.Now()
-				pressKey(VK_MBUTTON)
+				clickMiddleMouse()
 			} else if time.Since(lastPing) >= PingInterval {
-				pressKey(VK_MBUTTON)
+				clickMiddleMouse()
 				lastPing = time.Now()
 			}
 			time.Sleep(PollRateActive)
