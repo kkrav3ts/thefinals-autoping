@@ -2,6 +2,8 @@
 
 A lightweight Windows utility that automatically pings enemies while you're aiming in THE FINALS. It greatly improves communication within the team and helps you win more games even in solo queue.
 
+✅ This tool does not depend on THE FINALS game process, hence the integrity of the game is untouched. 
+
 ## Demo
 
 ![Demo](https://github.com/user-attachments/assets/bff17d8c-ceb6-458f-b3ba-b447ce5a8e2a)
