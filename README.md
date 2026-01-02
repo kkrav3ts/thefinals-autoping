@@ -1,58 +1,59 @@
 # THE FINALS Auto-Ping
 
-A lightweight Windows utility that automatically pings enemies while you're aiming in THE FINALS. It greatly improves communication within the team and helps you win more games even in solo queue.
-
-✅ This tool does not depend on THE FINALS game process, hence the integrity of the game is untouched. 
-
-## Demo
+Automatically ping enemies while aiming in THE FINALS. Improve team communication and win more games — even in solo queue.
 
 ![Demo](https://github.com/user-attachments/assets/bff17d8c-ceb6-458f-b3ba-b447ce5a8e2a)
 
-## How It Works
+## ✨ Features
 
-When you hold the **right mouse button** (aim down sights), the tool automatically presses **Left Control** (ping) for you:
+- **Auto-ping while aiming** — Hold right-click, enemies get pinged automatically
+- **Repeating pings** — Keeps pinging every second while you aim
+- **Lightweight** — Minimal CPU usage, runs quietly in the background
+- **Safe** — Does not modify game files or interact with the game process
 
-1. **Initial press** — Pings immediately when you start aiming
-2. **Repeat** — Continues to ping every 1 second while you hold right-click
-3. **Release** — Stops when you release the right mouse button
+## 🎮 Download
 
-This keeps enemies marked without interrupting your aim.
+1. Go to the [Releases](../../releases) page
+2. Download the latest `.exe` file
+3. Run it — no installation needed
 
-## Download
+> **Note:** Windows only.
 
-Download the latest release from the [Releases](../../releases) page.
-Only Windows supported.
+## ⚙️ Default Controls
 
-### Build from Source
-
-- Requires Go 1.25+. Install Go from [golang.org](https://golang.org/dl/).
-- Clone this repository.
-- Run the following command in the terminal:
-
-```bash
-# On Windows
-go build -o autoping.exe main.go
-
-# Cross-compile from macOS/Linux
-GOOS=windows GOARCH=amd64 go build -o autoping.exe main.go
-```
-
-## Usage
-
-1. Run `autoping.exe`
-2. Launch THE FINALS
-3. Aim at enemies — they get pinged automatically!
-4. Press `Ctrl+C` in the terminal to stop
-
-## Key Bindings
-
-| Action  | Default Key        |
+| Action  | Key                |
 |---------|--------------------|
 | Trigger | Right Mouse Button |
 | Ping    | Left Control       |
 
-To change keys, modify `VK_RBUTTON` and `VK_LCONTROL` in `main.go` using [Windows Virtual-Key Codes](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes).
+> **Tip:** Make sure your in-game ping key is set to Left Control.
 
-## License
+---
+
+## 🛠️ Advanced: Build from Source
+
+For developers who want to compile from source:
+
+**Requirements:** [Go 1.25+](https://golang.org/dl/)
+
+```bash
+# Windows
+go build -o autoping.exe main.go
+
+# macOS / Linux (cross-compile)
+GOOS=windows GOARCH=amd64 go build -o autoping.exe main.go
+```
+
+**Customization:** Edit `VK_RBUTTON` and `VK_LCONTROL` in `main.go` to change key bindings. See [Windows Virtual-Key Codes](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes) for reference.
+
+---
+
+## 💬 Feedback & Suggestions
+
+Have an idea or found a bug? Feel free to [open an issue](../../issues) or contact me directly.
+
+---
+
+## 📄 License
 
 MIT
