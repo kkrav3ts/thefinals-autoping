@@ -16,8 +16,8 @@ var (
 
 const (
 	// https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
-	VK_RBUTTON  = 0x02
-	VK_LCONTROL = 0xA2
+	VK_RBUTTON = 0x02
+	VK_MBUTTON = 0x04
 
 	INPUT_KEYBOARD  = 1
 	KEYEVENTF_KEYUP = 0x0002
@@ -83,9 +83,9 @@ func main() {
 			if !pressed {
 				pressed = true
 				lastPing = time.Now()
-				pressKey(VK_LCONTROL)
+				pressKey(VK_MBUTTON)
 			} else if time.Since(lastPing) >= PingInterval {
-				pressKey(VK_LCONTROL)
+				pressKey(VK_MBUTTON)
 				lastPing = time.Now()
 			}
 			time.Sleep(PollRateActive)
