@@ -1,9 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"syscall"
 	"time"
 )
+
+// Version is set at build time via -ldflags
+var Version = "dev"
 
 var (
 	user32           = syscall.NewLazyDLL("user32.dll")
@@ -28,6 +32,8 @@ func pressKey(vk int) {
 }
 
 func main() {
+	fmt.Printf("THE FINALS Auto-Ping %s\n", Version)
+
 	var pressed bool
 	var t time.Time
 

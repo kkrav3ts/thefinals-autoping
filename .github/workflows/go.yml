@@ -25,19 +25,31 @@ jobs:
         with:
           go-version: "1.25"
 
+      - name: Set version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" == "release" ]; then
+            echo "VERSION=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=dev-$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
+          fi
+
       - name: Build
-        run: GOOS=windows GOARCH=amd64 go build -o autoping.exe .
+        run: |
+          GOOS=windows GOARCH=amd64 go build \
+            -ldflags="-X 'main.Version=${{ steps.version.outputs.VERSION }}'" \
+            -o autoping-${{ steps.version.outputs.VERSION }}.exe .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: autoping-windows-amd64
-          path: autoping.exe
+          path: autoping-${{ steps.version.outputs.VERSION }}.exe
 
       - name: Upload to Release
         if: github.event_name == 'release'
         uses: softprops/action-gh-release@v1
         with:
-          files: autoping.exe
+          files: autoping-${{ steps.version.outputs.VERSION }}.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
