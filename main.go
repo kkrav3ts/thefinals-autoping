@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"os/signal"
 	"syscall"
 	"time"
 )
@@ -84,7 +86,14 @@ func main() {
 
 	// Graceful shutdown on Ctrl+C
 	fmt.Println("Close window or press Ctrl+C to exit")
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
 
+	go func() {
+		<-sigChan
+		fmt.Println("\nExiting...")
+		os.Exit(0)
+	}()
 	// Infinite loop for the process with variable polling rate
 	var nextPingTime time.Time
 	for {
