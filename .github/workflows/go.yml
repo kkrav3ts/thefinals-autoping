@@ -31,20 +31,34 @@ jobs:
             echo "VERSION=dev-$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
           fi
 
-      - name: Build
+      - name: Build autoping
         shell: bash
         run: |
           GOOS=windows GOARCH=amd64 go build -o autoping-${{ steps.version.outputs.VERSION }}.exe ./cmd/autoping
 
-      - name: Upload artifact
+      - name: Build autoshot
+        shell: bash
+        run: |
+          GOOS=windows GOARCH=amd64 go build -o autoshot-${{ steps.version.outputs.VERSION }}.exe ./cmd/autoshot
+
+      - name: Upload autoping artifact
         uses: actions/upload-artifact@v6
         with:
           name: autoping-windows-amd64
-          path: autoping-${{ steps.version.outputs.VERSION }}.exe
+          path: thefinals-autoping-${{ steps.version.outputs.VERSION }}.exe
+
+      - name: Upload autoshot artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: autoshot-windows-amd64
+          path: thefinals-autoshot-${{ steps.version.outputs.VERSION }}.exe
+
       - name: Upload to Release
         if: github.event_name == 'release'
         uses: softprops/action-gh-release@v2
         with:
-          files: autoping-${{ steps.version.outputs.VERSION }}.exe
+          files: |
+            thefinals-autoping-${{ steps.version.outputs.VERSION }}.exe
+            thefinals-autoshot-${{ steps.version.outputs.VERSION }}.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
