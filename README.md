@@ -22,7 +22,7 @@ Automatically ping enemies while aiming in THE FINALS. Improve team communicatio
 ## 📖 Usage
 
 1. Run the executable
-2. When prompted, press the key you want to use for pinging (this should match your in-game ping key)
+2. When prompted, press the keyboard(!) key you want to use for pinging (this should match your in-game ping key)
 3. The tool will confirm which key was selected
 4. Hold right-click (aim) in-game to automatically ping enemies every second
 5. Press `Ctrl+C` or close the window to exit
