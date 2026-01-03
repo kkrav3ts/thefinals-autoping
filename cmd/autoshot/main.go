@@ -17,11 +17,11 @@ func main() {
 
 	// PREDEFINED INPUTSl
 	leftMouseButton := 0x01 // Virtual-Key Code for Left Mouse Button used as shooting key.
-	delaysCount := 1000      // number of delays to generate
+	delaysCount := 1000     // number of delays to generate
 	mean := 60.0            // midpoint of delay cluster
-	stdDev := 10.0          // standard deviation to create the delay cluster
+	stdDev := 5.0           // standard deviation to create the delay cluster
 	minVal := 50.0          // minimum delay
-	maxVal := 90.0          // maximum delay
+	maxVal := 80.0          // maximum delay
 
 	// USER-BASED INPUT
 	fmt.Printf("Press the key you want to use for shooting.\n")
