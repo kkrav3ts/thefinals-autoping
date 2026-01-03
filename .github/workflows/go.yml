@@ -23,6 +23,7 @@ jobs:
           go-version: "1.25"
       - name: Set version
         id: version
+        shell: bash
         run: |
           if [ "${{ github.event_name }}" == "release" ]; then
             echo "VERSION=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
@@ -31,6 +32,7 @@ jobs:
           fi
 
       - name: Build
+        shell: bash
         run: |
           GOOS=windows GOARCH=amd64 go build -o autoping-${{ steps.version.outputs.VERSION }}.exe .
 
