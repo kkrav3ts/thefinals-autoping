@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"os/signal"
 	"syscall"
 	"time"
 )
@@ -61,8 +59,10 @@ func DetectKeyPress(keysList map[int]string) int {
 
 // PressKey simulates a key press and release for the specified virtual key.
 func PressKey(vk int) {
-	keyEventFKeyUp := 0x0002
+	// Press key down
 	_, _, _ = keybdEvent.Call(uintptr(vk), 0, 0, 0)
+	// Release key
+	keyEventFKeyUp := 0x0002
 	_, _, _ = keybdEvent.Call(uintptr(vk), 0, uintptr(keyEventFKeyUp), 0)
 }
 
@@ -83,15 +83,7 @@ func main() {
 	PollRateIdle := 200 * time.Millisecond   // Slow polling when idle
 
 	// Graceful shutdown on Ctrl+C
-	fmt.Println("Press Ctrl+C to exit")
-	sigChan := make(chan os.Signal, 1)
-	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
-
-	go func() {
-		<-sigChan
-		fmt.Println("\nExiting...")
-		os.Exit(0)
-	}()
+	fmt.Println("Close window or press Ctrl+C to exit")
 
 	// Infinite loop for the process with variable polling rate
 	var nextPingTime time.Time
@@ -100,7 +92,6 @@ func main() {
 			now := time.Now()
 			if nextPingTime.IsZero() || now.After(nextPingTime) {
 				PressKey(pingKey)
-				fmt.Println("\nPressing key")
 				nextPingTime = now.Add(PingInterval) // Calculate next ping time
 			}
 			time.Sleep(PollRateActive)
