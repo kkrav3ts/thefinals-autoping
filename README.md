@@ -1,63 +1,128 @@
-# THE FINALS Auto-Clicker
+# THE FINALS Auto-Clicker Tools
 
-Automatically ping enemies while aiming in THE FINALS. Improve team communication and win more games — even in solo queue.
+Level up your gameplay with smart automation. Two lightweight tools designed for THE FINALS that give you a competitive edge — without touching game files.
 
-![Ping](https://github.com/user-attachments/assets/bff17d8c-ceb6-458f-b3ba-b447ce5a8e2a)
-![Shoot](https://github.com/user-attachments/assets/9637f8b4-4a63-41e1-90ed-ceec852d2446)
+---
 
-## ✨ Features
+## 🎯 Auto-Ping
 
-- **Auto-ping while aiming** — Hold right-click, enemies get pinged automatically
-- **Repeating pings** — Keeps pinging every second while you aim
-- **Lightweight** — Minimal CPU usage, runs quietly in the background
-- **Safe** — Does not modify game files or interact with the game process
+**Never miss a callout again.** Hold right-click to aim, and enemies get pinged automatically every second. Perfect for solo queue where communication wins games.
 
-## 🎮 Download
+![Auto-Ping Demo](https://github.com/user-attachments/assets/bff17d8c-ceb6-458f-b3ba-b447ce5a8e2a)
 
-1. Go to the [Releases](../../releases) page
-2. Download the latest `.exe` file
-3. Run it — no installation needed
+### Why use it?
 
-> **Note:** Windows only.
+- 🏆 **Win more fights** — Your team always knows where enemies are
+- 🎮 **Zero effort** — Just aim like you normally would
+- 🤝 **Solo queue friendly** — Communicate without a mic
 
-## 📖 Usage
+---
 
-1. Run the executable
-2. When prompted, press the keyboard(!) key you want to use for pinging (this should match your in-game ping key)
-3. The tool will confirm which key was selected
-4. Hold right-click (aim) in-game to automatically ping enemies every second
-5. Press `Ctrl+C` or close the window to exit
+## 🔫 Auto-Shot
 
-## ⚙️ Controls
+**Maximize your fire rate.** Transforms any semi-auto or burst weapon into a consistent clicking machine with human-like timing. Hold left mouse button and let the tool do the clicking.
 
-| Action  | Key                |
-|---------|--------------------|
-| Trigger | Right Mouse Button |
-| Ping    | User Selected      |
+![Auto-Shot Demo](https://github.com/user-attachments/assets/9637f8b4-4a63-41e1-90ed-ceec852d2446)
 
-> **Note:** When you first run the tool, it will prompt you to press the key you want to use for pinging. Make sure this matches your in-game ping key binding.
+### Why use it?
 
-## 🛠️ Advanced: Build from Source
+- ⚡ **Faster firing** — Consistent clicks without finger fatigue
+- 🎯 **Better accuracy** — Focus on aiming, not clicking
+- 🕹️ **Natural timing** — Randomized delays that feel human
+
+---
+
+## 🎮 Download & Install
+
+1. Go to the [**Releases**](../../releases) page
+2. Download the `.exe` file for the tool you want:
+    - `thefinals-autoping-vX.X.X.exe` — for auto-pinging
+    - `thefinals-autoshot-vX.X.X.exe` — for auto-shooting
+3. Run it — no installation needed!
+
+> **Note:** Windows only. Full open-source, no malicious code!
+
+---
+
+## 📖 How to Use
+
+### Auto-Ping Setup
+
+1. **Run** `thefinals-autoping.exe`
+2. **Press** the keyboard key you use for pinging in-game (e.g., `Z` or `X`)
+3. **Play!** Hold right-click (aim) and enemies get pinged automatically
+
+| Action  | Key                      |
+|---------|--------------------------|
+| Trigger | Right Mouse Button (Aim) |
+| Ping    | Your selected key        |
+
+---
+
+### Auto-Shot Setup
+
+This tool requires a quick one-time setup in your game settings:
+
+#### Step 1: Change your in-game shoot key
+
+1. Open THE FINALS → **Settings** → **Keybinds**
+2. Change **"Fire"** from `Left Mouse Button` to any keyboard key (e.g., `L`)
+3. Apply and close settings
+
+#### Step 2: Configure the tool
+
+1. **Run** `thefinals-autoshot.exe`
+2. **Press** the same key you just mapped for shooting (e.g., `L`)
+3. The tool will confirm your selection
+
+#### Step 3: Play!
+
+- **Hold Left Mouse Button** to shoot — the tool rapidly presses your mapped key
+- Release to stop shooting
+
+| Action  | Key                      |
+|---------|--------------------------|
+| Trigger | Left Mouse Button (Hold) |
+| Shoot   | Your selected key        |
+
+> **Tip:** This works great with semi-auto weapons like pistols, revolvers, or burst weapons!
+
+---
+
+## ✅ Safe to Use
+
+Both tools are **external** and work by simulating keyboard inputs. They:
+
+- ❌ Do NOT read game memory
+- ❌ Do NOT modify game files
+- ❌ Do NOT inject into the game process
+- ✅ Work like a hardware macro keyboard
+
+---
+
+## 🛠️ Build from Source (Advanced)
 
 For developers who want to compile from source:
 
 **Requirements:** [Go 1.25+](https://golang.org/dl/)
 
 ```bash
-# Windows
-go build -o autoping.exe ./cmd/autoping
+# Build Auto-Ping
+go build -o thefinals-autoping.exe ./cmd/autoping
 
-# macOS / Linux (cross-compile)
-GOOS=windows GOARCH=amd64 go build -o autoping.exe ./cmd/autoping
+# Build Auto-Shot
+go build -o thefinals-autoshot.exe ./cmd/autoshot
 ```
 
-**Customization:** 
-- To change the aim trigger key, modify the `aimKey` variable in `cmd/autoping/main.go`. Default is `0x02` (Right Mouse Button).
-- The ping key is selected at runtime, but you can modify the `KeyNames` map in `internal/keyboard/keyboard.go` to add/remove supported keys.
-- Timing intervals can be adjusted in the `main()` function in `cmd/autoping/main.go`.
+See [Windows Virtual-Key Codes](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes) for key code reference.
 
-See [Windows Virtual-Key Codes](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes) for reference.
+---
 
-## 💬 Feedback & Suggestions
+## 💬 Feedback & Support
 
-Have an idea or found a bug? Feel free to [open an issue](../../issues) or contact me directly.
+Have an idea, found a bug, or need help? [Open an issue](../../issues) — I'd love to hear from you!
+
+---
+<p align="center">
+  <strong>Maintained with ❤️ by kkrav3ts. Good luck, contestant!
+</p>
