@@ -40,7 +40,9 @@ Level up your gameplay with smart automation. Two lightweight tools designed for
     - `thefinals-autoshot-vX.X.X.exe` — for auto-shooting
 3. Run it — no installation needed!
 
-> **Note:** Windows only. Full open-source, no malicious code!
+> **Note:** Windows only. Fully open-source, no malicious code!
+
+> ⚠️ **Windows Defender Warning:** These executables are not signed with a Microsoft certificate, so Windows Defender or SmartScreen may flag them as unrecognized. This is normal for open-source tools. You can safely allow the app to run — the source code is fully available for review.
 
 ---
 
