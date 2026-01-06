@@ -44,7 +44,7 @@ jobs:
       - name: Build delayChecker
         shell: bash
         run: |
-          GOOS=windows GOARCH=amd64 go build -o thefinals-delayChecker-${{ steps.version.outputs.VERSION }}.exe ./cmd/delayChecker
+          GOOS=windows GOARCH=amd64 go build -o lmb-delays-checker-${{ steps.version.outputs.VERSION }}.exe ./cmd/delayChecker
 
       - name: Upload autoping artifact
         uses: actions/upload-artifact@v6
@@ -61,8 +61,8 @@ jobs:
       - name: Upload delayChecker artifact
         uses: actions/upload-artifact@v6
         with:
-          name: delayChecker-windows-amd64
-          path: thefinals-delayChecker-${{ steps.version.outputs.VERSION }}.exe
+          name: lmb-delays-checker-windows-amd64
+          path: lmb-delays-checker-${{ steps.version.outputs.VERSION }}.exe
 
       - name: Upload to Release
         if: github.event_name == 'release'
