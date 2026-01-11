@@ -1,6 +1,6 @@
 # THE FINALS Auto-Clicker Tools
 
-Level up your gameplay with smart automation. Two lightweight tools designed for THE FINALS that give you a competitive edge — without touching game files.
+Level up your gameplay with smart automation. Three lightweight tools designed for THE FINALS that give you a competitive edge — without touching game files.
 
 ---
 
@@ -32,12 +32,25 @@ Level up your gameplay with smart automation. Two lightweight tools designed for
 
 ---
 
+## ⏱️ Delay Checker
+
+**Measure your click timing.** A simple diagnostic tool that displays the duration of your left mouse button clicks in milliseconds. Useful for testing your mouse, analyzing your click patterns, or calibrating the Auto-Shot tool.
+
+### Why use it?
+
+- 🔬 **Debug your setup** — Verify your mouse is registering clicks correctly
+- 📊 **Analyze patterns** — See how long you hold clicks on average
+- 🛠️ **Calibrate tools** — Fine-tune Auto-Shot timing based on your click behavior
+
+---
+
 ## 🎮 Download & Install
 
 1. Go to the [**Releases**](../../releases) page
 2. Download the `.exe` file for the tool you want:
     - `thefinals-autoping-vX.X.X.exe` — for auto-pinging
     - `thefinals-autoshot-vX.X.X.exe` — for auto-shooting
+    - `thefinals-delaychecker-vX.X.X.exe` — for click timing analysis
 3. Run it — no installation needed!
 
 > **Note:** Windows only. Fully open-source, no malicious code!
@@ -91,9 +104,27 @@ This tool requires a quick one-time setup in your game settings:
 
 ---
 
+### Delay Checker Setup
+
+1. **Run** `thefinals-delaychecker.exe`
+2. **Click** the left mouse button anywhere
+3. **See** the click duration displayed in milliseconds
+
+```
+Monitoring left mouse button clicks...
+Press and release the left mouse button to see the delay.
+Click delay: 87 ms
+Click delay: 112 ms
+Click delay: 95 ms
+```
+
+> **Tip:** Use this to understand your natural click timing before configuring Auto-Shot!
+
+---
+
 ## ✅ Safe to Use
 
-Both tools are **external** and work by simulating keyboard inputs. They:
+All tools are **external** and work by monitoring/simulating keyboard inputs. They:
 
 - ❌ Do NOT read game memory
 - ❌ Do NOT modify game files
@@ -114,6 +145,9 @@ go build -o thefinals-autoping.exe ./cmd/autoping
 
 # Build Auto-Shot
 go build -o thefinals-autoshot.exe ./cmd/autoshot
+
+# Build Delay Checker
+go build -o thefinals-delaychecker.exe ./cmd/delayChecker
 ```
 
 See [Windows Virtual-Key Codes](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes) for key code reference.
