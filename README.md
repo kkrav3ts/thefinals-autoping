@@ -36,6 +36,8 @@ Level up your gameplay with smart automation. Three lightweight tools designed f
 
 **Measure your click timing.** A simple diagnostic tool that displays the duration of your left mouse button clicks in milliseconds. Useful for testing your mouse, analyzing your click patterns, or calibrating the Auto-Shot tool.
 
+![Delay checker](https://github.com/user-attachments/assets/7dda3dd5-565e-497a-91f8-6a000baf89da)
+
 ### Why use it?
 
 - 🔬 **Debug your setup** — Verify your mouse is registering clicks correctly
