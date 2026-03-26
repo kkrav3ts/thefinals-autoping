@@ -15,12 +15,12 @@ import (
 func main() {
 	fmt.Println("THE FINALS Auto-Shooting Tool.")
 
-	// PREDEFINED INPUTSl
+	// PREDEFINED INPUTS
 	leftMouseButton := 0x01 // Virtual-Key Code for Left Mouse Button used as shooting key.
 	delaysCount := 1000     // number of delays to generate
 	mean := 60.0            // midpoint of delay cluster
 	stdDev := 5.0           // standard deviation to create the delay cluster
-	minVal := 40.0          // minimum delay
+	minVal := 50.0          // minimum delay
 	maxVal := 80.0          // maximum delay
 
 	// USER-BASED INPUT
