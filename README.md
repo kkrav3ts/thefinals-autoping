@@ -78,29 +78,36 @@ Level up your gameplay with smart automation. Three lightweight tools designed f
 
 ### Auto-Shot Setup
 
-This tool requires a quick one-time setup in your game settings:
+This tool requires a quick one-time setup in your game settings.
 
-#### Step 1: Change your in-game shoot key
+#### Step 1: Change your in-game primary firing key
 
-1. Open THE FINALS → **Settings** → **Keybinds**
-2. Change **"Fire"** from `Left Mouse Button` to any keyboard key (e.g., `L`)
+1. Open THE FINALS -> **Settings** -> **Keybinds**.
+2. Change **Primary Fire** from `Left Mouse Button` to any keyboard key (e.g., `L`)
 3. Apply and close settings
 
-#### Step 2: Configure the tool
+#### Step 2: First launch
 
 1. **Run** `thefinals-autoshot.exe`
-2. **Press** the same key you just mapped for shooting (e.g., `L`)
+2. **Press** the same keyboard key you mapped for **Primary Fire** in-game.
 3. The tool will confirm your selection
 
-#### Step 3: Play!
+#### Step 3: Optional reconfiguration
 
-- **Hold Left Mouse Button** to shoot — the tool rapidly presses your mapped key
-- Release to stop shooting
+- Pressing `F1` anytime resets the tool and enables you to reconfigure both the trigger key and the shooting key.
+- Press `F13` anytime to pause auto-shooting.
 
-| Action  | Key                      |
-|---------|--------------------------|
-| Trigger | Left Mouse Button (Hold) |
-| Shoot   | Your selected key        |
+#### Step 4: Play!
+
+- **Hold `Mouse 1`** or the trigger key you set shoot - the tool rapidly presses your mapped firing key
+- Release the trigger key to stop shooting
+
+| Action  | Key                  |
+|---------|----------------------|
+| Trigger | `Mouse 1` by default |
+| Shoot   | Your selected key    |
+| Rebind  | `F1`                 |
+| Pause   | `F13`                |
 
 > **Tip:** This works great with semi-auto weapons like pistols, revolvers, or burst weapons!
 

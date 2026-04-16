@@ -39,6 +39,27 @@ var KeyNames = map[int]string{
 	0xDB: "[", 0xDC: "\\", 0xDD: "]", 0xDE: "'",
 }
 
+// MouseButtonNames maps mouse virtual key codes to human-readable names.
+var MouseButtonNames = map[int]string{
+	0x01: "Mouse 1",
+	0x02: "Mouse 2",
+	0x04: "Mouse 3",
+	0x05: "Mouse 4",
+	0x06: "Mouse 5",
+}
+
+// TriggerKeyNames includes both keyboard keys and mouse buttons for trigger selection.
+var TriggerKeyNames = func() map[int]string {
+	keys := make(map[int]string, len(KeyNames)+len(MouseButtonNames))
+	for code, name := range KeyNames {
+		keys[code] = name
+	}
+	for code, name := range MouseButtonNames {
+		keys[code] = name
+	}
+	return keys
+}()
+
 // IsKeyPressed returns true if the specified virtual key is currently pressed.
 func IsKeyPressed(vk int) bool {
 	ret, _, _ := getAsyncKeyState.Call(uintptr(vk))
@@ -55,6 +76,13 @@ func DetectKeyPress(keysList map[int]string) int {
 				return k
 			}
 		}
+		time.Sleep(50 * time.Millisecond)
+	}
+}
+
+// WaitForKeyRelease blocks until the specified virtual key is no longer pressed. Is needed to prevent multiple detections of the same key when user holds assigns a trigger key.
+func WaitForKeyRelease(vk int) {
+	for IsKeyPressed(vk) {
 		time.Sleep(50 * time.Millisecond)
 	}
 }
